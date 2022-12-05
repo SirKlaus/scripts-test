@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "echo \"==> BUILD <==\" && exit 0",
-    "prepare": "echo \"==> PREPARE <==\" && exit 0",
-    "prepack": "echo \"==> PREPACK <==\" && exit 0",
+    "prepare": "node -e \"process.cwd() !== require('path').resolve(__dirname) && process.exit(1)\" || node -e \"require('child_process').exec('npm -v', (error, stdout) => Number(stdout.split('.').shift()) >= 7 && process.exit(1))\" || echo \"==> PREPARE <==\" && exit 0",
+    "prepack": "node -e \"require('child_process').exec('npm -v', (error, stdout) => Number(stdout.split('.').shift()) <= 6 && process.exit(1))\" || echo \"==> PREPACK <==\" && exit 0",
     "preinstall": "echo \"==> PREINSTALL <==\" && exit 0",
     "install": "echo \"==> INSTALL <==\" && exit 0",
     "postinstall": "echo \"==> POSTINSTALL <==\" && exit 0"
