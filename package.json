@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "echo \"==> BUILD <==\" && exit 0",
-    "prepare": "echo \"==> PREPARE <==\" && exit 0",
+    "prepare": "node -e \"process.env.INIT_CWD !== process.cwd() && process.exit(1)\" || npm ci && echo \"==> PREPARE <==\" && exit 0",
     "prepack": "echo \"==> PREPACK <==\" && exit 0",
     "preinstall": "echo \"==> PREINSTALL <==\" && exit 0",
     "install": "echo \"==> INSTALL <==\" && exit 0",
